@@ -1,17 +1,37 @@
-# barcode_scanning
+# Barcode Scanner
 
-A new Flutter project.
+It's an app that uses Firebase ML Kit to capture information from a Barcode or QRCode chosen, taken or live and shows it to the user to see.
+
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+To use this app, all you need is flutter 2.0 installed and running on your machine. Clone this project to your computer and opens a emulator or run on your android device using: 
 
-A few resources to get you started if this is your first Flutter project:
+```sh
+$ flutter pub get
+```
+```sh
+$ flutter run
+```
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Screenshots
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# barcode_scanner
+* The screenshots were taken from an Android device.
+
+
+1. Home
+
+![gallery](https://user-images.githubusercontent.com/51540772/125676359-1ef4f267-3f01-4615-a517-a0768817a401.png)
+
+2. Live
+
+![live](https://user-images.githubusercontent.com/51540772/125676366-6fc8e3c2-a725-4e28-bf83-e87dc738618d.png)
+
+
+## Authors
+
+* **Ester Mabel** - *GitHub* - [GitHub](https://github.com/estermabel)
+
+## Acknowledgments
+
+* I built this app as a way to learn new things about Flutter and Machine Learning. It was a way to spend some time doing something nice and practicing my abilities and learning new ones. It was a fun project to make and I'm planning on keep making projects like this one.
