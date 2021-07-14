@@ -1,14 +1,17 @@
 import 'dart:io';
 
 import 'package:barcode_scanning/components/result_item.dart';
+import 'package:barcode_scanning/pages/live_page.dart';
 import 'package:barcode_scanning/utils/constants.dart';
+import 'package:camera/camera.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
 import 'package:image_picker/image_picker.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({Key? key}) : super(key: key);
+  final List<CameraDescription> cameras;
+  HomePage({Key? key, required this.cameras}) : super(key: key);
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -107,6 +110,11 @@ class _HomePageState extends State<HomePage> {
     return MaterialApp(
       home: Scaffold(
         backgroundColor: Constants.backgroundColor,
+        floatingActionButton: FloatingActionButton(
+          onPressed: showCameraOptionsDialog,
+          backgroundColor: Constants.accentColor,
+          child: Icon(Icons.camera_alt),
+        ),
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(16.0),
@@ -115,30 +123,27 @@ class _HomePageState extends State<HomePage> {
                 Container(
                   margin: EdgeInsets.only(top: 100),
                   child: Center(
-                    child: TextButton(
-                      onPressed: showCameraOptionsDialog,
-                      child: Container(
-                        margin: EdgeInsets.only(top: 15),
-                        child: _image != null
-                            ? Image.file(
-                                _image!,
-                                width: 200,
-                                height: 200,
-                                fit: BoxFit.fill,
-                              )
-                            : Container(
-                                width: 200,
-                                height: 200,
-                                decoration: BoxDecoration(
-                                  color: Constants.dialogColor,
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                child: Icon(
-                                  Icons.camera_alt,
-                                  color: Constants.backgroundColor,
-                                ),
+                    child: Container(
+                      margin: EdgeInsets.only(top: 15),
+                      child: _image != null
+                          ? Image.file(
+                              _image!,
+                              width: 200,
+                              height: 200,
+                              fit: BoxFit.fill,
+                            )
+                          : Container(
+                              width: 200,
+                              height: 200,
+                              decoration: BoxDecoration(
+                                color: Constants.dialogColor,
+                                borderRadius: BorderRadius.circular(8),
                               ),
-                      ),
+                              child: Icon(
+                                Icons.camera_alt,
+                                color: Constants.backgroundColor,
+                              ),
+                            ),
                     ),
                   ),
                 ),
@@ -173,23 +178,23 @@ class _HomePageState extends State<HomePage> {
           style: TextStyle(color: Constants.textColor),
         ),
         actions: [
-          // TextButton(
-          //   onPressed: () {
-          //     Navigator.pop(context);
-          //     Navigator.push(
-          //       context,
-          //       MaterialPageRoute(
-          //         builder: (context) => LivePage(
-          //           camera: widget.cameras[0],
-          //         ),
-          //       ),
-          //     );
-          //   },
-          //   child: Text(
-          //     "Live",
-          //     style: TextStyle(color: Colors.blue[300]),
-          //   ),
-          // ),
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => LivePage(
+                    camera: widget.cameras[0],
+                  ),
+                ),
+              );
+            },
+            child: Text(
+              "Live",
+              style: TextStyle(color: Colors.blue[300]),
+            ),
+          ),
           TextButton(
             onPressed: () {
               Navigator.pop(context);
